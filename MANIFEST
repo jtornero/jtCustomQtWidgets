@@ -1,0 +1,8 @@
+MANIFEST
+python/itemselectorplugin.py
+python/coordinateEditor.py
+python/customcombodb.py
+isplugin/itemselector.py
+isplugin/customcombodbplugin.py
+isplugin/coordeditorplugin.py
+setup.py

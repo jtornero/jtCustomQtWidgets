@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+import sys
+from PyQt4 import QtCore, QtGui
+import isplugin.itemlistselector as il
+
+
+app=QtGui.QApplication(sys.argv)
+
+lista=['Manzanas','Zanahorias','Peras','Limones','Fresas']
+
+
+b=il.ItemListSelector()
+b.setOriginalItems(lista)
+
+
+b.show()
+
+sys.exit(app.exec_())

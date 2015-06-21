@@ -1,0 +1,4 @@
+MANIFEST
+python/itemselectorplugin.py
+isplugin/itemselector.py
+setup.py
