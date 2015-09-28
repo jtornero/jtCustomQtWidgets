@@ -43,12 +43,12 @@ class CustomComboDB(QtGui.QComboBox):
         self.setPassFocusTo(passFocusTo)
         
     # WIDGET TO FOCUS AFTER PRESSING ENTER    
-    def setPassFocusTo(self, passFocusToWidget):
+    def setPassFocusTo(self, passFocusTo):
       try:
         self.returnKeyPressed.disconnect()
       except:
         pass
-      self._passFocusTo = passFocusToWidget
+      self._passFocusTo = widget
       try:
         self.returnKeyPressed.connect(passFocusTo.setFocus)
       except:
