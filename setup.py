@@ -142,6 +142,10 @@ setup(
     packages=["isplugin"],
     qt_designer_plugins=["python/itemlistselectorplugin.py",
                          "python/coordeditorplugin.py",
-                         "python/customcombodbplugin.py"],
+                         "python/customcombodbplugin.py",
+                         "python/customlineeditplugin.py",
+                         "python/customdateeditplugin.py",
+                         "python/customcheckboxplugin.py",
+                         "python/customplaintexteditplugin.py"],
     distclass = Distribution
     )

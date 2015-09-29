@@ -2,7 +2,15 @@ MANIFEST
 python/itemselectorplugin.py
 python/coordinateEditor.py
 python/customcombodb.py
+python/customlineedit.py
+python/customdateedit.py
+python/customcheckbox.py
+python/customplaintextedit.py
 isplugin/itemselector.py
 isplugin/customcombodbplugin.py
 isplugin/coordeditorplugin.py
+isplugin/customlineeditplugin.py
+isplugin/customdateeditplugin.py
+isplugin/customcheckboxplugin.py
+isplugin/customplaintexteditplugin.py
 setup.py

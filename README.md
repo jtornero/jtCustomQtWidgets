@@ -4,11 +4,19 @@ JT PyQt4 Custom Widgets
 This is a small and (I hope) growing collection of PyQt4 custom widgets for use in your projects. 
 The good point is that they are also QtDesigner plugins, so you can use them in QtDesigner as any other widget, just drag and drop.
 
+One of the advantages of this implementation is that eases focus-chainage of widgets. Some of them has the method passFocusTo which
+makes possible to define which widget is going to recive the applicaton focus using its method setFocus().
+
+
 So far, the widgets are:
 
 -    coordinateeditor: Derived from QLineEdit, it makes possible to type a geographic coordinate (Latitude or longitude) in several formats.
--    customcombodb: Derived from QComboBox, it makes possible to resolve foreign keys to choose values for a field in a database table.
+-    customcombodb: Derived from QComboBox, it makes possible to resolve foreign keys to choose values for a field in a database table. and also has pass-focus-to capability
 -    itemlistselector: Two QListWidgets with buttons which make possible move elements from one list to the other.
+-    customlineedit: Derived from QLineEdit, provides a widget with pass-focus-to capabilites as well as multi-validation (real,integer)
+-    customcheckbox: Derived from QCheckBox, provides a widget with pass-focus-to capabilites
+-    customplaintextedit:Derived from QPlainTextEdit, provides a widget with pass-focus-to capabilites
+-    customdateedit:Derived from QDateEdit, provides a widget with pass-focus-to capabilites
 
 Copyright/License
 =================

@@ -23,7 +23,10 @@ class CustomComboDB(QtGui.QComboBox):
     
     __pyqtSignals__ = ("returnKeyPressed()",)
     
-    def __init__(self, parent = None, db = None, table = None, indexColumn = None, showColumn = None, orderColumn = None, valueByDefault = True, defaultIndex = 1, tableFilter = None, initialized = True, passFocusTo = None):
+    def __init__(self, parent = None, db = None, table = None,\
+                indexColumn = None, showColumn = None, orderColumn = None,\
+                valueByDefault = True, defaultIndex = 1, tableFilter = None,\
+                initialized = True, passFocusTo = None):
       
       QtGui.QComboBox.__init__(self, parent)
       self.setDatabase(db)
@@ -50,7 +53,7 @@ class CustomComboDB(QtGui.QComboBox):
         pass
       self._passFocusTo = passFocusToWidget
       try:
-        self.returnKeyPressed.connect(passFocusTo.setFocus)
+        self.returnKeyPressed.connect(self._passFocusTo.setFocus)
       except:
        
         print "Tried to pass a non-Qt widget object for focusing"
