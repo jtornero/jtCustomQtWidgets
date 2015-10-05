@@ -118,7 +118,7 @@ class Distribution(distutils.dist.Distribution):
         info = QLibraryInfo.location(QLibraryInfo.PluginsPath)
         plugins_path = os.path.join(unicode(info), "designer", "python")
         if not os.path.exists(plugins_path):
-            os.mkdir(plugins_path)
+            os.makedirs(plugins_path)
         
         for plugin in plugins:
         
