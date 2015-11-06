@@ -5,6 +5,8 @@ python/customcombodb.py
 python/customlineedit.py
 python/customdateedit.py
 python/customcheckbox.py
+python/customspinbox.py
+python/customdoublespinbox.py
 python/customplaintextedit.py
 isplugin/itemselector.py
 isplugin/customcombodbplugin.py
@@ -12,5 +14,7 @@ isplugin/coordeditorplugin.py
 isplugin/customlineeditplugin.py
 isplugin/customdateeditplugin.py
 isplugin/customcheckboxplugin.py
+isplugin/customdoublespinboxplugin.py
+isplugin/customspinboxplugin.py
 isplugin/customplaintexteditplugin.py
 setup.py

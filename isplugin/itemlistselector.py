@@ -32,7 +32,7 @@ class ItemListSelector(QtGui.QWidget):
         
         
         self._mode=None
-
+        
         self.setupUi()
         self.show()
 
@@ -45,6 +45,10 @@ class ItemListSelector(QtGui.QWidget):
         self.originalItemsWidget=QtGui.QListWidget()
         self.selectedItemsWidget=QtGui.QListWidget()
         
+        # Labels for the lists
+        
+        self.originalItemsLabel = QtGui.QLabel()
+        self.selectedItemsLabel = QtGui.QLabel()
         # Making possible multiple item selection
         
         self.originalItemsWidget.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
@@ -57,12 +61,15 @@ class ItemListSelector(QtGui.QWidget):
         self.unselectAllButton=QtGui.QPushButton('<<')
         
         # Adding all to layout
-        self.layout.addWidget(self.originalItemsWidget,0,0,8,1)
-        self.layout.addWidget(self.selectManyButton,1,1,1,1)
-        self.layout.addWidget(self.unselectManyButton,2,1,1,1)
-        self.layout.addWidget(self.selectAllButton,5,1,1,1)
-        self.layout.addWidget(self.unselectAllButton,6,1,1,1)
-        self.layout.addWidget(self.selectedItemsWidget,0,2,8,1)
+        
+        self.layout.addWidget(self.originalItemsLabel,0,0,1,1)
+        self.layout.addWidget(self.originalItemsWidget,1,0,8,1)
+        self.layout.addWidget(self.selectManyButton,2,1,1,1)
+        self.layout.addWidget(self.unselectManyButton,3,1,1,1)
+        self.layout.addWidget(self.selectAllButton,6,1,1,1)
+        self.layout.addWidget(self.unselectAllButton,7,1,1,1)
+        self.layout.addWidget(self.selectedItemsLabel,0,2,1,1)
+        self.layout.addWidget(self.selectedItemsWidget,1,2,8,1)
         
         # Signal-slot connections, for the buttons
         self.selectManyButton.clicked.connect(self.toSelected)
@@ -79,7 +86,25 @@ class ItemListSelector(QtGui.QWidget):
         self.clearWidgets()
         self.originalItemsWidget.addItems(itemList)  
         
-
+    def setOriginalItemsLabel(self,label=''):
+        
+        self._originalItemsLabelText=label
+        self.originalItemsLabel.setText("<center><b>%s</b></center>" %label)
+    
+    def getOriginalItemsLabel(self):
+        
+        return self._originalItemsLabelText
+    
+    def setSelectedItemsLabel(self,label=''):
+        
+        self._selectedItemsLabelText=label
+        self.selectedItemsLabel.setText("<center><b>%s</b></center>" %label)
+    
+    def getSelectedItemsLabel(self):
+        
+        return self._selectedItemsLabelText
+    
+    
     def clearWidgets(self):
         self.originalItemsWidget.clear()
         self.selectedItemsWidget.clear()
@@ -150,3 +175,6 @@ class ItemListSelector(QtGui.QWidget):
         return self._mode
   
     mode = QtCore.pyqtProperty(str,getEditorMode, setEditorMode)
+    oriItemsLabel = QtCore.pyqtProperty(str,getOriginalItemsLabel, setOriginalItemsLabel)
+    selItemsLabel = QtCore.pyqtProperty(str,getSelectedItemsLabel, setSelectedItemsLabel)
+    

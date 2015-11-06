@@ -15,8 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-
+import math
 from PyQt4 import QtCore, QtGui
+
 
 class customCombo(QtGui.QComboBox):
       
@@ -183,10 +184,12 @@ class coordDialog(QtGui.QDialog):
 class CoordinateEditor(QtGui.QLineEdit):
   
   
-  def __init__(self, parent = None):
+  def __init__(self, parent = None, displayMode='DM'):
     
     QtGui.QLineEdit.__init__(self, parent)
     self._mode=None
+    self._displayMode=displayMode
+    self.coordinate=0
     self.show()
   
   def keyPressEvent(self, event):
@@ -199,16 +202,59 @@ class CoordinateEditor(QtGui.QLineEdit):
     a = self.coordValue.exec_()
     if a==1 and self.coordValue.value != 0:
       
-      coordToText = QtCore.QString(u"%1").arg(self.coordValue.value,precision=8)
-      self.setText(coordToText)
+        self.setCoordinate(self.coordValue.value,precision=8)
         
     else:
       self.setText('')
-
+  
+  def setCoordinate(self, coordinate):
+    
+    self.coordinate = coordinate
+    
+    degree_fraction, degrees = math.modf(coordinate)
+    degrees=int(degrees)
+    
+    decimal_minutes=abs(degree_fraction*60)
+    
+    minute_fraction, minutes = math.modf(decimal_minutes)
+    minutes=int(minutes)
+    
+    decimal_seconds=minute_fraction*60
+       
+    decString=(u"{0}".format(coordinate))
+    dmString=(u"{0}\u00b0 {1}'".format(degrees, decimal_minutes))
+    dmsString=(u"{0}\u00b0 {1}' {2}''".format(degrees, minutes, decimal_seconds))
+    
+    print '***********************',coordinate,decString,dmString,dmsString
+    
+    if self.displayMode=='DEC':
+        print 'DEC'
+        self.setText(decString)
+        
+    elif self.displayMode=='DM':
+        print 'DM'
+        self.setText(dmString)
+    
+    elif self.displayMode=='DMS':
+        print 'DMS'
+        self.setText(dmsString)
+    
+    self.setToolTip(u"DEC: {0}\nDM: {1}\nDMS: {2}".format(decString,dmString,dmsString))
+    
+  def getCoordinate(self):
+      return self.coordinate
+  
   def setEditorMode(self, mode):
     self._mode = mode
     
   def getEditorMode(self):
     return self._mode
   
+  def setDisplayMode(self, mode):
+    self._displayMode = mode
+    
+  def getDisplayMode(self):
+    return self._displayMode
+  
   mode = QtCore.pyqtProperty(str,getEditorMode, setEditorMode)
+  displayMode = QtCore.pyqtProperty(str,getDisplayMode, setDisplayMode)
